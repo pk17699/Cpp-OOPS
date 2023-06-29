@@ -1,0 +1,39 @@
+#include<iostream>
+using namespace std;
+
+class base{
+public:
+    void show(){ // if we made it virtual then which show to call 
+        // will be decided at runtime.
+        // e.g virtual void show(){}
+        cout<<"Base"<<"\n";
+    }
+};
+
+class derived1:public base{
+public:
+    void show(){
+        cout<<"derived1"<<"\n";
+    }
+};
+
+class derived2:public base{
+public:
+    void show(){
+        cout<<"derived2"<<"\n";
+    }
+};
+
+int main(){
+    base* bp;
+    derived1 ob1;
+    derived2 ob2;
+    bp = &ob1;
+    bp->show(); // it will only call base class function show
+    bp = &ob2;
+    bp->show();// it will only call base class function show
+    // but if we make base class function virtual then it will
+    // decide at runtime which function to call i.e whose references are 
+    // passed will be called. To make any function virtual just use virtual
+    // keyword before function return type
+}

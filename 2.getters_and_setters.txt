@@ -1,0 +1,48 @@
+#include<iostream>
+using namespace std;
+
+class Car{
+    private:
+    float price;
+    public:
+    int model;
+    char name[20];
+
+void print(){
+    cout<<"Name "<<name<<"\n";
+    cout<<"Model "<<model<<"\n";
+    cout<<"Price "<<price<<"\n";
+}
+
+void set_price(float p){
+    float msp = 100;
+    if(p > 0){
+        price = p;
+    }
+    else{
+    price = msp;
+    }
+}
+
+float get_price(){
+    return price;
+}
+
+};
+
+int main(){
+    Car c;
+    c.model = 8970;
+    c.name[0] = 'B';
+    c.name[1] = 'M';
+    c.name[2] = 'W';
+    c.name[3] = '\0';
+
+    c.set_price(-120);
+    cout<<c.get_price()<<"\n";
+
+    c.print();
+
+
+return 0;
+}

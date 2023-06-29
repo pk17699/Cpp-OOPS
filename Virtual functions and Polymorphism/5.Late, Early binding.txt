@@ -1,0 +1,40 @@
+#include<iostream>
+using namespace std;
+
+class A{
+public:
+    virtual void f1(){
+        cout<<"A's f1\n";
+    }
+    virtual void f2(){
+        cout<<"A's f2\n";
+    }
+    void f3(){
+        cout<<"A's f3\n";
+    }
+};
+
+class B:public A{
+public:
+    void f1(){
+        cout<<"B's f1\n";
+    }
+    void f2(int i){
+        cout<<"B's f2\n";
+    }
+    void f3(){
+       cout<<"B's f3\n"; 
+    }
+};
+
+int main(){
+    A* ap;
+    B b;
+    ap = &b;
+    ap->f1(); // Late binding takes place because f1() is virtual function
+    ap->f2(); // Late binding(runtime binding)
+    //ap->f2(4); base class pointer can call only those functions which are
+    // in Base class and are intherited to derived class. It has no idea
+    // about derived class functions. So it will give us error.
+    ap->f3(); // Early binding(compile time binding)
+}

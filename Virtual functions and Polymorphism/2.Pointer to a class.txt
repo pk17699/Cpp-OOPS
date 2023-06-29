@@ -1,0 +1,27 @@
+#include<iostream>
+using namespace std;
+class A
+{
+    int x;
+public:
+    void input(int i)
+    {
+        x=i;
+    }
+    void display()
+    {
+        cout<<x<<endl;
+    }
+};
+int main()
+{
+    A a;
+    A *p; //creating pointer to a class
+    a.input(150);
+    a.display();
+
+    p=&a; //pointer point to object of class
+    p->display(); //use arrow operator to access class members
+    p->input(100);
+    p->display();
+}

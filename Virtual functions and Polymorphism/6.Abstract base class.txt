@@ -1,0 +1,28 @@
+#include<iostream>
+using namespace std;
+
+class A{
+public:
+    virtual void show() = 0; // pure virtual function
+    // A class having atleast one pure virtual function is called
+    // Abstract base class and we can't instantiate object from A
+    // and derived class must override virtual function of base class
+    // otherwise it will also become abstract base class
+};
+
+class B:public A{
+public:
+    void show(){
+        cout<<"B's show\n";
+    }
+};
+
+int main(){
+    A* ap;
+    B b;
+    ap = &b;
+    ap->show();
+    // or
+    // B b;
+    // b.show();
+}

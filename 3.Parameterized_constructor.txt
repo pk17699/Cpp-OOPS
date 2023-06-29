@@ -1,0 +1,57 @@
+#include <iostream>
+#include<cstring>
+using namespace std;
+
+#include<iostream>
+using namespace std;
+
+class Car{
+    private:
+    float price;
+    public:
+    int model;
+    char name[20];
+
+    Car(){
+        cout<<"inside constructor"<<"\n";
+    }
+    Car(float p, int m, const char *n){
+        price = p;
+        model = m;
+        strcpy(name, n);
+    }
+
+void set_price(float p){
+    float msp = 120;
+    if(p > 0){
+    price = p;
+    }
+    else{
+        price = msp;
+    }
+}
+void print(){
+    cout<<"Name "<<name<<"\n";
+    cout<<"Model "<<model<<"\n";
+    cout<<"Price "<<price<<"\n";
+    cout<<"\n";
+}
+
+};
+
+int main(){
+    Car c;
+    Car d(122, 8709, "Audi");
+    d.print();
+
+    c.model = 8970;
+    c.name[0] = 'B';
+    c.name[1] = 'M';
+    c.name[2] = 'W';
+    c.name[3] = '\0';
+    c.set_price(130);
+    c.print();
+
+
+return 0;
+}

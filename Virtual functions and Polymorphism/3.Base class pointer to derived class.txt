@@ -1,0 +1,42 @@
+#include<iostream>
+using namespace std;
+class A
+{
+    int i;
+public:
+    void inp_i(int x)
+    {
+        i=x;
+    }
+    void disp_i()
+    {
+        cout<<"i ="<<i<<endl;
+    }
+};
+class B:public A
+{
+    int j;
+public:
+    void inp_j(int y)
+    {
+        j=y;
+    }
+    void disp_j()
+    {
+        cout<<"j ="<<j<<endl;
+    }
+};
+int main()
+{
+    B b;
+    B *bp;
+    bp=&b;
+    A a;
+    A *ap;
+    ap=&b;
+    ap->inp_i(100); //base class pointer can only access derived class members inherited from base class
+    ap->disp_i();
+    ap->inp_j(200); //base class pointer can't access derived class members which are not inherited
+    ap->disp_j();   //hence it will give an error
+                    //We can't use derived class pointer to point to base class
+}

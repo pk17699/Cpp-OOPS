@@ -1,0 +1,72 @@
+#include <iostream>
+#include<cstring>
+using namespace std;
+
+class Car{
+    private:
+    float price;
+    public:
+    int model;
+    char *name;
+
+    Car(){
+        name = NULL;
+    }
+    Car(float p, int m, const char *n){         //parameterised constructor
+        price = p;
+        model = m;
+        name = new char[strlen(n) + 1];         // Dynamic memory allocation
+        strcpy(name, n);
+    }
+
+    Car(Car &x){                               // Deep copy constructor
+        price = x.price;                       // If you remove this constructor 
+        model = x.model;                       // compiler will do shallow copy
+        name = new char[strlen(x.name) + 1];
+        strcpy(name, x.name);
+    }
+    ~Car(){                                    // Destructor
+        cout<<"deleting car "<<name<<"\n";
+        if(name != NULL){
+            delete [] name;
+        }
+    }
+
+void operator =(Car &x){                      
+    price = x.price;                          
+    model = x.model;
+    name = new char[strlen(x.name) + 1];
+    strcpy(name, x.name);
+}
+void set_price(float p){
+    float msp = 120;
+    if(p > 0){
+    price = p;
+    }
+    else{
+        price = msp;
+    }
+}
+void print(){
+    cout<<"Name "<<name<<"\n";
+    cout<<"Model "<<model<<"\n";
+    cout<<"Price "<<price<<"\n";
+    cout<<"\n";
+}
+
+};
+
+int main(){
+    Car c(120, 340, "BMW");
+    Car d;                 
+    d = c;                    
+    d.set_price(400);         
+    d.name[0] = 'A'; 
+
+    Car *e = new Car(12, 30, "LOTUS");     
+    e->print();   // or use (*e).print();
+    delete e;     // calling destructor deleting dynamically                  
+    c.print();    // allocated memory     
+    d.print();
+return 0;
+}

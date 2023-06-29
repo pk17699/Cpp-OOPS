@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+
+class A{
+public:
+    void f1(){
+        cout<<"A's f1"<<endl;
+    }
+    void f2(){
+        cout<<"A's f2"<<endl;
+    }
+};
+
+class B:public A{
+public:
+    void f2(){  // overriding function f2 present in class A
+        cout<<"B's f2"<<endl; // overriding - same type and definition
+    }
+    void f1(int x){ // overloading function f1 present in class A
+        cout<<"B's f1 x = "<<x<<endl; // overloading - different number of parameters
+    }
+    void f1(double y){
+        cout<<"B's f1 y = "<<y<<endl;
+    }
+};
+
+int main(){
+    // Binding - compiler decides at compile time which definition to bind with which function
+    // before actually running program, this is called compile time or early binding
+    B obj;
+    obj.f1(5);
+    obj.f2();
+}
